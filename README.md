@@ -31,7 +31,7 @@
 现在的 Agent 大多能自己装 skill。直接把下面这段**粘进 Claude Code / Codex 等的聊天框**，它会识别自己是什么 Agent 并放到正确位置：
 
 ```
-把 https://github.com/orange90/harness-codex-skill 这个 skill 装到你的 skills 目录：
+把 https://github.com/EasyHarness/harness-codex-skill 这个 skill 装到你的 skills 目录：
 clone 下来（或拉取最新），按你的运行环境放到对应位置（如 Claude Code 用 ~/.claude/skills，
 Codex 用 ~/.codex/skills），目录名用 harness-codex-skill，可以用软链接。装完确认 SKILL.md 在位。
 ```

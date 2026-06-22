@@ -31,7 +31,7 @@ This is a standard **Agent Skill**: a directory containing `SKILL.md`. Installin
 Most modern Agents can install skills themselves. Just **paste the following into your Claude Code / Codex chat box**; the Agent will figure out which runtime it is and place the skill correctly:
 
 ```
-Install the skill at https://github.com/orange90/harness-codex-skill into your skills directory:
+Install the skill at https://github.com/EasyHarness/harness-codex-skill into your skills directory:
 clone it (or pull the latest), and place it where appropriate for your runtime (e.g. ~/.claude/skills for
 Claude Code, ~/.codex/skills for Codex), using the directory name harness-codex-skill. A symlink is fine.
 After install, confirm SKILL.md is in place.
