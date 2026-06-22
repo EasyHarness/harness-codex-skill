@@ -64,7 +64,7 @@ python3 "$SKILL/scripts/split_md.py" "<workdir>/.../memory.md" "<workdir>/.../AU
 读 `references/classification-guide.md`，**逐个 unit 判定** `requirement` / `record` / `drop`（脚本的 `guess` 仅供参考）。遇到一段里既有规则又有记录就**拆开**（同 id 出两条，requirement 用 `text` 给提炼后的纯规则）。对照现有 prompt 把重复要求标 `drop`。把结果写成 `/tmp/classification.json`。
 
 ### 4. 重建并结构化 automation.toml
-先读现有 `prompt` 与 `requirements-extracted.md`，按 `references/toml-structure.md` 的骨架，把「现有 prompt + 审核通过的新增要求」**重写成分节、去重的完整 prompt**，写到 `/tmp/new_prompt.txt`。然后：
+先读现有 `prompt`，再读 `classification.json` 里标为 `requirement` 的单元（其 `text` 即提炼后的纯规则）。按 `references/toml-structure.md` 的骨架，把「现有 prompt + 审核通过的新增要求」**重写成分节、去重的完整 prompt**，写到 `/tmp/new_prompt.txt`。要求**只**进 automation.toml 的 `prompt`，不另起一个 `requirements-extracted.md`——它就是唯一真源。然后：
 
 ```bash
 python3 "$SKILL/scripts/restructure_toml.py" --toml "<automation.toml>" --prompt-file /tmp/new_prompt.txt           # dry-run，看 diff
@@ -74,10 +74,12 @@ python3 "$SKILL/scripts/restructure_toml.py" --toml "<automation.toml>" --prompt
 脚本会备份、做写回后解析校验、默认以可读的多行字符串写入。**把 diff 给用户确认后再 `--apply`。**
 
 ### 5. 分流记录、瘦身 memory
+要求已在第 4 步进了 `automation.toml`，这步只处理剩下的：record 归档到 `run-history.md`，源 md 备份后重写为指针。**不产出 `requirements-extracted.md`**——要求的唯一真源是 toml。
+
 ```bash
 python3 "$SKILL/scripts/route_md.py" --units /tmp/units.json --classification /tmp/classification.json \
-  --requirements-out "<workdir>/requirements-extracted.md" --history-out "<workdir>/run-history.md"            # dry-run
-# 用户确认后加 --apply：record 归档到 run-history.md，源 md 备份后重写为指针
+  --history-out "<workdir>/run-history.md"            # dry-run
+# 用户确认后加 --apply
 ```
 
 提醒用户：以后长期要求进 `automation.toml`，运行记录进 `run-history.md`，别再回头堆 `memory.md`。
