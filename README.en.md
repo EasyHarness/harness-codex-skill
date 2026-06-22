@@ -4,7 +4,17 @@
 
 An Agent Skill that cleans up the mess left behind by **Codex automation (automated tasks)** in your working directory.
 
-Its core purpose is **not deleting files**, but rebuilding a single source of truth:
+---
+
+## Sound familiar?
+
+> I told the automated task to remember a rule — say, "keep paragraphs short" or "hit the word count." Yet the next run it makes the exact same mistake, like an employee with no memory: it only moves when you kick it.
+>
+> To figure out what I'd even asked of it, I had to dig through three files: `memory.md`, `AUTOMATION_REQUIREMENTS.md`, and `automation.toml`. I'd written the same rule twice without noticing. And `memory.md` mixes the rules in with the run logs, growing longer by the day.
+>
+> After a week, the working directory had sprouted four separate Python environments, a pile of tmp snapshots, and intermediate json files leaked into the project root — nothing cleaned up. One week in and the whole thing already felt out of control. All I wanted was: **one single source of truth for every requirement, and no debris left behind after each run.**
+
+That's exactly what this Skill is for. Its core purpose is **not deleting files**, but rebuilding a single source of truth:
 
 1. Reads `memory.md` / `*REQUIREMENTS*.md` paragraph by paragraph and splits **user requirements** from **run records** into different files;
 2. Merges scattered long-term requirements into the `prompt` field of `~/.codex/automations/<id>/automation.toml`, and **rewrites that unstructured blob into clearly separated sections**;

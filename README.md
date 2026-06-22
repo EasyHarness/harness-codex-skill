@@ -4,7 +4,17 @@
 
 收拾 **Codex automation（自动化任务）** 在工作目录里留下的烂摊子的 Agent Skill。
 
-它的核心**不是删文件**，而是重建 single source of truth：
+---
+
+## 你是不是也这样
+
+> 我给自动化任务提了条要求——比如「每段别太长」「字数要够」——让它记住。可它下一轮照样犯同样的错，像个没记性的员工，踢一下动一下。
+>
+> 想搞清楚我到底给它提过哪些要求，得翻三个文件：`memory.md`、`AUTOMATION_REQUIREMENTS.md`，还有 `automation.toml`。同一条要求我甚至重复写了两遍都没发现。`memory.md` 里要求和运行日志还混在一起，越堆越长。
+>
+> 跑了一周，工作目录里冒出四套 Python 环境、一堆 tmp 快照、泄漏到根目录的中间 json，没人清理。一个任务才跑一周，就有种彻底失控的感觉——我要的只是：**所有要求有一个唯一真源，跑完别留一地鸡毛。**
+
+这正是本 Skill 要解决的。它的核心**不是删文件**，而是重建 single source of truth：
 
 1. 逐段判读 `memory.md` / `*REQUIREMENTS*.md`，把**用户要求**与**运行记录**分流到不同文件；
 2. 把散落的长期要求合并进 `~/.codex/automations/<id>/automation.toml` 的 `prompt`，并把这坨无结构长字符串**重写成清晰分节**；
