@@ -1,4 +1,4 @@
-# codex-automation-cleanup
+# harness-codex-skill
 
 [简体中文](./README.md) | **English**
 
@@ -24,7 +24,7 @@ All logic is generic and never hard-codes rules for any specific project.
 
 ## Installation
 
-This is a standard **Agent Skill**: a directory containing `SKILL.md`. Installing = put this directory (or a symlink to it) into the Agent's skills directory, **using the name `codex-automation-cleanup`**.
+This is a standard **Agent Skill**: a directory containing `SKILL.md`. Installing = put this directory (or a symlink to it) into the Agent's skills directory, **using the name `harness-codex-skill`**.
 
 ### One-shot install (recommended)
 
@@ -33,7 +33,7 @@ Most modern Agents can install skills themselves. Just **paste the following int
 ```
 Install the skill at https://github.com/orange90/harness-codex-skill into your skills directory:
 clone it (or pull the latest), and place it where appropriate for your runtime (e.g. ~/.claude/skills for
-Claude Code, ~/.codex/skills for Codex), using the directory name codex-automation-cleanup. A symlink is fine.
+Claude Code, ~/.codex/skills for Codex), using the directory name harness-codex-skill. A symlink is fine.
 After install, confirm SKILL.md is in place.
 ```
 
@@ -44,9 +44,9 @@ After installation, restart (or refresh) the session. If you prefer manual insta
 First clone the repo to any local location:
 
 ```bash
-git clone https://github.com/orange90/harness-codex-skill ~/src/codex-automation-cleanup
+git clone https://github.com/orange90/harness-codex-skill ~/src/harness-codex-skill
 # Or if you already have this directory, note its absolute path; below it is referred to as $SKILL_SRC
-SKILL_SRC=~/src/codex-automation-cleanup
+SKILL_SRC=~/src/harness-codex-skill
 ```
 
 #### Claude Code
@@ -55,25 +55,25 @@ User-level (available to all projects):
 
 ```bash
 mkdir -p ~/.claude/skills
-ln -s "$SKILL_SRC" ~/.claude/skills/codex-automation-cleanup
-# If you don't want a symlink, copy directly: cp -R "$SKILL_SRC" ~/.claude/skills/codex-automation-cleanup
+ln -s "$SKILL_SRC" ~/.claude/skills/harness-codex-skill
+# If you don't want a symlink, copy directly: cp -R "$SKILL_SRC" ~/.claude/skills/harness-codex-skill
 ```
 
 Project-level (only available inside a particular repo):
 
 ```bash
 mkdir -p <your-project>/.claude/skills
-ln -s "$SKILL_SRC" <your-project>/.claude/skills/codex-automation-cleanup
+ln -s "$SKILL_SRC" <your-project>/.claude/skills/harness-codex-skill
 ```
 
-After restarting (or refreshing) Claude Code, the skill will auto-load when `SKILL.md`'s `description` matches; you can also just say "use codex-automation-cleanup to tidy up this directory".
+After restarting (or refreshing) Claude Code, the skill will auto-load when `SKILL.md`'s `description` matches; you can also just say "use harness-codex-skill to tidy up this directory".
 
 #### Codex
 
 ```bash
 mkdir -p ~/.codex/skills
-ln -s "$SKILL_SRC" ~/.codex/skills/codex-automation-cleanup
-# or cp -R "$SKILL_SRC" ~/.codex/skills/codex-automation-cleanup
+ln -s "$SKILL_SRC" ~/.codex/skills/harness-codex-skill
+# or cp -R "$SKILL_SRC" ~/.codex/skills/harness-codex-skill
 ```
 
 Codex skills follow the same structure as Claude Code (directory + `SKILL.md`). Once installed, just ask it to tidy up the corresponding working directory in a session.
@@ -85,7 +85,7 @@ Codex skills follow the same structure as Claude Code (directory + `SKILL.md`). 
 Any Agent that follows the open **Agent Skill (`SKILL.md` + YAML frontmatter)** convention installs the same way — drop the directory into the Agent's skills directory, typically:
 
 ```
-<agent config root>/skills/codex-automation-cleanup/
+<agent config root>/skills/harness-codex-skill/
 ```
 
 Replace `<agent config root>` with that Agent's config directory (e.g. `~/.openclaw`, `~/.hermes`, etc., per their own docs); everything else is the same. If you're unsure of the path, check the Agent's "skills / plugins / extensions" docs for the directory it scans for skills.
@@ -121,7 +121,7 @@ The Agent will, in order: locate the working directory and `automation.toml` →
 ## Directory structure
 
 ```
-codex-automation-cleanup/
+harness-codex-skill/
 ├── SKILL.md                      # Agent entry: trigger conditions + workflow + safety principles
 ├── README.md                     # Chinese documentation
 ├── README.en.md                  # This document

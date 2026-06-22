@@ -70,7 +70,7 @@ def main():
 
     trash.mkdir(parents=True, exist_ok=True)
     manifest = []
-    restore_lines = ["#!/bin/bash", "# 由 codex-automation-cleanup 生成；运行本脚本可把隔离文件还原。", "set -e", ""]
+    restore_lines = ["#!/bin/bash", "# 由 harness-codex-skill 生成；运行本脚本可把隔离文件还原。", "set -e", ""]
     for e in selected:
         src = Path(e["path"])
         if not src.exists():

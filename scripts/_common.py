@@ -1,4 +1,4 @@
-"""Shared helpers for the codex-automation-cleanup scripts.
+"""Shared helpers for the harness-codex-skill scripts.
 
 Dependency-free. Reads TOML via stdlib ``tomllib`` (Py3.11+) or ``tomli`` when
 available, and otherwise falls back to a minimal parser that understands the

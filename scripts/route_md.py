@@ -116,7 +116,7 @@ def main():
 
 def _build_requirements(blocks, ts):
     out = [f"# 已提取的用户要求（{ts}）\n",
-           "> 由 codex-automation-cleanup 从 memory.md / *REQUIREMENTS*.md 逐段提取、去重。",
+           "> 由 harness-codex-skill 从 memory.md / *REQUIREMENTS*.md 逐段提取、去重。",
            "> 审核后由 restructure_toml.py 合并进 automation.toml 的 prompt。\n"]
     by_src = {}
     for src, text in blocks:
@@ -133,7 +133,7 @@ def _build_requirements(blocks, ts):
 
 def _build_history(blocks, ts):
     out = [f"# 运行历史归档（{ts}）\n",
-           "> 由 codex-automation-cleanup 从 memory.md 抽出的运行/过程记录。仅供追溯，"
+           "> 由 harness-codex-skill 从 memory.md 抽出的运行/过程记录。仅供追溯，"
            "不再作为下一轮 Agent 的指令来源。\n"]
     cur = None
     for src, heading, text in blocks:
@@ -149,7 +149,7 @@ def _build_history(blocks, ts):
 def _stub(name, req_out, hist_out, trash, ts):
     return (
         f"# {name}（已整理 {ts}）\n\n"
-        f"本文件已被 codex-automation-cleanup 整理，以重建 single source of truth：\n\n"
+        f"本文件已被 harness-codex-skill 整理，以重建 single source of truth：\n\n"
         f"- **用户要求** 已提取到 `{req_out}`，并合并进 automation.toml 的 `prompt`。\n"
         f"- **运行/过程记录** 已归档到 `{hist_out}`。\n"
         f"- 原始内容备份：`{trash}/{name}`。\n\n"

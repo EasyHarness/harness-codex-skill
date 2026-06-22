@@ -1,5 +1,5 @@
 ---
-name: codex-automation-cleanup
+name: harness-codex-skill
 description: >-
   整理并结构化 Codex automation（自动化任务）在工作目录里留下的烂摊子。逐段判读 memory.md /
   AUTOMATION_REQUIREMENTS.md，把「用户要求」与「运行记录」分流到不同文件，将散落的长期要求合并进
@@ -19,7 +19,7 @@ allowed-tools:
   - AskUserQuestion
 ---
 
-# Codex Automation Cleanup
+# harness-codex-skill
 
 收拾 Codex automation 工作目录的屎山。核心**不是删文件**，而是重建 single source of truth：
 
